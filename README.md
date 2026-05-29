@@ -102,7 +102,7 @@ npm install
 npm run dev
 🔗 Live Demo
 
-👉 
+👉 https://frontpage-feed-reader-alpha.vercel.app/dashboard
 
 👩‍💻 Author
 
