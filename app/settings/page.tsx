@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { useTheme } from "@/components/ThemeProvider"; // Use esta!
+import { useTheme } from "@/components/ThemeProvider";
 
 type FeedSource = {
   id: string;
@@ -17,6 +17,9 @@ const initialFeeds: FeedSource[] = [
 ];
 
 export default function SettingsPage() {
+  // Chamada do hook real do arquivo ThemeProvider
+  const { theme, setTheme } = useTheme();
+
   // Controle de Abas Internas das Configurações
   const [activeTab, setActiveTab] = useState<"profile" | "feeds">("profile");
 
@@ -24,7 +27,6 @@ export default function SettingsPage() {
   const [name, setName] = useState("Alex Johnson");
   const [email, setEmail] = useState("alex.johnson@frontpage.dev");
   const [avatar, setAvatar] = useState<string | null>(null);
-  const [theme, setTheme] = useState<"system" | "light" | "dark">("dark"); // Estado do Tema
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Estados dos Feeds
@@ -190,7 +192,6 @@ export default function SettingsPage() {
                     {theme === "system" && <div className="w-2 h-2 rounded-full bg-blue-500" />}
                   </div>
                 </div>
-                {/* Mini Preview do Layout */}
                 <div className="w-full h-8 bg-zinc-900/80 rounded border border-zinc-800/80 mt-2 overflow-hidden flex">
                   <div className="w-1/3 h-full bg-zinc-950 border-r border-zinc-800/40" />
                   <div className="w-2/3 h-full bg-zinc-100" />
@@ -212,7 +213,6 @@ export default function SettingsPage() {
                     {theme === "light" && <div className="w-2 h-2 rounded-full bg-blue-500" />}
                   </div>
                 </div>
-                {/* Mini Preview do Layout */}
                 <div className="w-full h-8 bg-zinc-100 rounded border border-zinc-300 mt-2 overflow-hidden flex">
                   <div className="w-1/3 h-full bg-zinc-200" />
                   <div className="w-2/3 h-full bg-white" />
@@ -234,7 +234,6 @@ export default function SettingsPage() {
                     {theme === "dark" && <div className="w-2 h-2 rounded-full bg-blue-500" />}
                   </div>
                 </div>
-                {/* Mini Preview do Layout */}
                 <div className="w-full h-8 bg-zinc-950 rounded border border-zinc-800 mt-2 overflow-hidden flex">
                   <div className="w-1/3 h-full bg-zinc-900 border-r border-zinc-800" />
                   <div className="w-2/3 h-full bg-zinc-950" />
@@ -260,7 +259,6 @@ export default function SettingsPage() {
       {/* CONTEÚDO DA ABA: SUBSCRIPTIONS */}
       {activeTab === "feeds" && (
         <div className="space-y-8">
-          {/* Mantém idêntico ao código anterior de gerenciamento de RSS e OPML */}
           <section className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-1">Add New Subscription</h2>
             <p className="text-xs text-zinc-500 mb-6">Follow a new website or RSS feed URL.</p>
