@@ -12,7 +12,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-white transition-colors duration-300">
         <ThemeProvider>
+          {/* Menu Lateral */}
           <Sidebar />
+          
+          {/* Área de Conteúdo Principal */}
           <main className="flex-1">
             {children}
           </main>
